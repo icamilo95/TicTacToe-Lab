@@ -1,0 +1,32 @@
+
+td {
+	width: 100px;
+	height: 100px;
+	border: 1px solid blue;
+	font-size: 50px;
+	text-align: center;
+}
+
+
+table {
+	border-spacing: 0px;
+	position: relative;
+	left:420px;
+	top: 50px;
+}
+
+#frame {
+	width: 301px;
+	height: 301px;
+	border: 1px solid white;
+	position: absolute;
+	top: 127px;
+	left: 420px;
+
+
+}
+
+.btn {
+	margin-left: 120px;
+
+}
