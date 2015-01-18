@@ -1,9 +1,6 @@
 
 // ALTERNATE
 
-var Items = ["X","O","X","O","X","O","X","O","X"];
-var Item = " ";
-
 
 var movement1 = document.getElementById("c1");
 movement1.addEventListener("click", function(){alternate(1);});
@@ -32,19 +29,45 @@ movement8.addEventListener("click", function(){alternate(8);});
 var movement9 = document.getElementById("c9");
 movement9.addEventListener("click", function(){alternate(9);});
 
+// var reset = document.getElementsByClassName("btn");
+// reset.addEventListener("click", delete);
+
+var Items = ["X","O","X","O","X","O","X","O","X"];
+var Item = " ";
+
 function alternate(cell){
 
-	Item = Items.shift();
-	element = "movement" + cell;
-	var camilo = window[element];
-	camilo.innerHTML = Item;
-	if (Items.length > 0){
-	} else {
-	setTimeout(function(){alert("Game Over")},500);
+	if (Items.length === 0){
+		setTimeout(function(){alert("Game Over");},500);
 		
-	}
-}
+	} else {
 
+		element = "movement" + cell;
+		var movement = window[element];
+			
+		if (movement.innerHTML === "") {
+			Item = Items.shift();	
+			movement.innerHTML = Item;
+		
+			if (Item === "X"){
+				event.target.setAttribute("class","colors1");
+			}else {
+				event.target.setAttribute("class","colors2");
+			}
+		} //if 
+
+	} //else
+			
+
+} //Function alternate
+
+// function delete (){
+
+// 	var allCells = document.getElementsByClassName("cells");
+// 	for (var i = 0; i < allCells.length; i++) {
+// 		allCells[i].setAttribute("class", "resetclass");
+// 	};
+// }
 
 
 

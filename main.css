@@ -30,3 +30,11 @@ table {
 	margin-left: 120px;
 
 }
+
+.colors1 {
+	background-color: rgba(0,0,128,0.1);
+}
+
+.colors2 {
+	background-color: rgba(0,128,0,0.1);
+}
