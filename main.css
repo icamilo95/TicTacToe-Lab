@@ -22,7 +22,7 @@ table {
 	position: absolute;
 	top: 127px;
 	left: 420px;
-
+	display: none;
 }
 
 .btn {

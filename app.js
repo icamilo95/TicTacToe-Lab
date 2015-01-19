@@ -112,6 +112,7 @@ function checkWinner2 () {
 			}
 	} 
 	// Checks for winner in a row
+	var cont = 1;
 	for (var a = 1; a < 8; a = a + 3) {
 		row1 = "movement" + a;
 		row2 = "movement" + (a + 1);
@@ -120,9 +121,13 @@ function checkWinner2 () {
 		var rPilda2 = window[row2];
 		var rPilda3 = window[row3];
 	
+		
 		if (rPilda1.innerHTML === rPilda2.innerHTML && rPilda1.innerHTML === rPilda3.innerHTML && rPilda1.innerHTML !== "") {
-			winnerMessage("row",a);
-			console.log(a); 
+			winnerMessage("row",cont);
+			 
+		}else {
+			// It counts winner row: It's neccesary because the loop adds 3 to a, so the next count only adds 1.
+			cont++;
 		}
 
 	}
@@ -169,6 +174,8 @@ function resetGame (){
 		contItem = 0;
 		var messageReset = document.getElementById("messageText");
 		messageReset.innerHTML = "Turn of player \"X\"";
+		
+		
 	}
 	Items = ["X","O","X","O","X","O","X","O","X"];
 	
