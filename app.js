@@ -30,11 +30,13 @@ function playTurn(cell){
 		turnOfPlayerMessage();		
 		element = "movement" + cell;
 		var movement = window[element];
+		
 		if (movement.innerHTML === "") {
 			Item = Items.shift();	
 			movement.innerHTML = Item;
 			changeColor();
-			winnerCheck();
+			// checkWinner();
+			checkWinner2();
 		} 
 	}
 } 
@@ -42,8 +44,8 @@ function playTurn(cell){
 
 var contItem = 0;
 function turnOfPlayerMessage (){
-	contItem++
-		var message = document.getElementById("messageText");
+	contItem++;
+			var message = document.getElementById("messageText");
 		if (contItem % 2 === 0) {
 			message.innerHTML = "Turn of player \"X\"";
 		} else {
@@ -55,14 +57,13 @@ function turnOfPlayerMessage (){
 function winnerMessage(line, number){
 	var message = document.getElementById("winner");
 	alert(message.innerHTML = "The winner is " + "\""+ Item +"\" --> " + line + ": " + number);
-	
-	counterWins();
+	counterWinner();
 }
 
 
 var xContWins = 0;
 var cContWins = 0;
-function counterWins (){
+function counterWinner (){
 	
 	if (Item === "X") {
 		xContWins++;
@@ -72,13 +73,13 @@ function counterWins (){
 	} else {
 		cContWins++;
 		xContWins = 0;
-		var message = document.getElementById("counter");
-		message.innerHTML = "Counter: " + cContWins;
-		console.log(cContWins);
+		var message2 = document.getElementById("counter");
+		message2.innerHTML = "Counter: " + cContWins;
+		
 	}	
 	if (cContWins === 3 || xContWins ===3) {
 		alert("CONGRATULATIONS!! 3 WINS IN A ROW!");
-	};
+	}
 	Items = [];
 }
 
@@ -92,27 +93,71 @@ function changeColor(){
 	}
 }
 
-function winnerCheck (){
-	if (movement1.innerHTML === movement2.innerHTML && movement1.innerHTML === movement3.innerHTML && movement1.innerHTML !== "") {
-		winnerMessage("row",1);
-	}else if (movement4.innerHTML === movement5.innerHTML && movement4.innerHTML === movement6.innerHTML && movement4.innerHTML !== ""){
-		winnerMessage("row",2);
-	} else if (movement7.innerHTML === movement8.innerHTML && movement7.innerHTML === movement9.innerHTML && movement7.innerHTML !== ""){
-		winnerMessage("row",3);
 
-	} else if (movement1.innerHTML === movement4.innerHTML && movement1.innerHTML === movement7.innerHTML && movement1.innerHTML !== "") {
-		winnerMessage("column",1);
-	} else if (movement2.innerHTML === movement5.innerHTML && movement2.innerHTML === movement8.innerHTML && movement2.innerHTML !== "") {
-		winnerMessage("column",2);
-	} else if (movement3.innerHTML === movement6.innerHTML && movement3.innerHTML === movement9.innerHTML && movement3.innerHTML !== "") {
-		winnerMessage("column",3);
 
-	} else if (movement1.innerHTML === movement5.innerHTML && movement1.innerHTML === movement9.innerHTML && movement1.innerHTML !== "") {
-		winnerMessage("Diagonal","Left to Right");	
-	} else if (movement3.innerHTML === movement5.innerHTML && movement3.innerHTML === movement7.innerHTML && movement3.innerHTML !== "") {
-		winnerMessage("Diagonal","Right to Left");	
+
+function checkWinner2 () {
+	// checks for winner in a column
+	for (var i = 1; i < 4; i++) {
+		
+		col1 = "movement" + i;
+		col4 = "movement" + (i + 3);
+		col7 = "movement" + (i + 6);
+		var cPilda1 = window[col1];
+		var cPilda4 = window[col4];	
+		var cPilda7 = window[col7];	
+		
+		if (cPilda1.innerHTML === cPilda4.innerHTML && cPilda1.innerHTML === cPilda7.innerHTML && cPilda1.innerHTML !== "") {
+			winnerMessage("column",i); 
+			}
 	} 
+	// Checks for winner in a row
+	for (var a = 1; a < 8; a = a + 3) {
+		row1 = "movement" + a;
+		row2 = "movement" + (a + 1);
+		row3 = "movement" + (a + 2);
+		var rPilda1 = window[row1];
+		var rPilda2 = window[row2];
+		var rPilda3 = window[row3];
+	
+		if (rPilda1.innerHTML === rPilda2.innerHTML && rPilda1.innerHTML === rPilda3.innerHTML && rPilda1.innerHTML !== "") {
+			winnerMessage("row",a);
+			console.log(a); 
+		}
+
+	}
+	// Checks for winner in a diagonal left to right
+	for (var b = 1; b < 2; b++) {
+		diagl1 = "movement" + b;
+		diagl5 = "movement" + (b + 4);
+		diagl9 = "movement" + (b + 8);
+		var dlPilda1 = window[diagl1];
+		var dlPilda5 = window[diagl5];
+		var dlPilda9 = window[diagl9];
+
+		if (dlPilda1.innerHTML === dlPilda9.innerHTML && dlPilda1.innerHTML === dlPilda5.innerHTML && dlPilda1.innerHTML !== "") {
+			winnerMessage("diagonal Left to Right",""); 
+		}
+	}	
+
+	// Checks for winner in a diagonal rigth to left
+	for (var c = 3; c < 5; c++) {
+		diagr3 = "movement" + c;
+		diagr5 = "movement" + (c + 2);
+		diagr7 = "movement" + (c + 4);
+		var drPilda3 = window[diagr3];
+		var drPilda5 = window[diagr5];
+		var drPilda7 = window[diagr7];
+
+		if (drPilda3.innerHTML === drPilda5.innerHTML && drPilda3.innerHTML === drPilda7.innerHTML && drPilda3.innerHTML !== "") {
+			winnerMessage("diagonal Right to Left",""); 
+		}
+	}
+
+
 }
+
+
 
 
 function resetGame (){
@@ -120,10 +165,35 @@ function resetGame (){
 	for (var i = 0; i < allCells.length; i++) {
 		allCells[i].setAttribute("class","resetclass");
 		allCells[i].innerHTML = "";
-	};
+		// Next: Resets Turn of player
+		contItem = 0;
+		var messageReset = document.getElementById("messageText");
+		messageReset.innerHTML = "Turn of player \"X\"";
+	}
 	Items = ["X","O","X","O","X","O","X","O","X"];
 	
 }
+
+
+// function checkWinner (){
+// 	if (movement1.innerHTML === movement2.innerHTML && movement1.innerHTML === movement3.innerHTML && movement1.innerHTML !== "") {
+// 		winnerMessage("row",1);
+// 	}else if (movement4.innerHTML === movement5.innerHTML && movement4.innerHTML === movement6.innerHTML && movement4.innerHTML !== ""){
+// 		winnerMessage("row",2);
+// 	} else if (movement7.innerHTML === movement8.innerHTML && movement7.innerHTML === movement9.innerHTML && movement7.innerHTML !== ""){
+// 		winnerMessage("row",3);
+// 	} else if (movement1.innerHTML === movement4.innerHTML && movement1.innerHTML === movement7.innerHTML && movement1.innerHTML !== "") {
+// 		winnerMessage("column",1);
+// 	} else if (movement2.innerHTML === movement5.innerHTML && movement2.innerHTML === movement8.innerHTML && movement2.innerHTML !== "") {
+// 		winnerMessage("column",2);
+// 	} else if (movement3.innerHTML === movement6.innerHTML && movement3.innerHTML === movement9.innerHTML && movement3.innerHTML !== "") {
+// 		winnerMessage("column",3);
+// 	} else if (movement1.innerHTML === movement5.innerHTML && movement1.innerHTML === movement9.innerHTML && movement1.innerHTML !== "") {
+// 		winnerMessage("Diagonal","Left to Right");	
+// 	} else if (movement3.innerHTML === movement5.innerHTML && movement3.innerHTML === movement7.innerHTML && movement3.innerHTML !== "") {
+// 		winnerMessage("Diagonal","Right to Left");	
+// 	} 
+// }
 
 
 
