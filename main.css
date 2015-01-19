@@ -23,7 +23,6 @@ table {
 	top: 127px;
 	left: 420px;
 
-
 }
 
 .btn {
@@ -37,4 +36,8 @@ table {
 
 .colors2 {
 	background-color: rgba(0,128,0,0.1);
+}
+
+h3 {
+	margin-left: 40px;
 }
