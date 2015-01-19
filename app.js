@@ -56,7 +56,9 @@ function winnerMessage(line, number){
 	contWins++;
 	var message = document.getElementById("winner");
 	alert(message.innerHTML = "The winner is " + "\""+ Item +"\" --> " + line + ": " + number);
-	console.log(contWins);	
+	console.log(contWins);
+	Items = ["X","O","X","O","X","O","X","O","X"];
+	console.log(Items);	
 }
 
 
@@ -90,14 +92,16 @@ function winnerCheck (){
 	} 
 }
 
-// function resetGame (){
 
-// 	var allCells = document.getElementsByClassName("colors1");
-// 	var allCells = document.getElementsByClassName("colors2");
-// 	for (var i = 0; i < allCells.length; i++) {
-// 		allCells[i].setAttribute("class", "resetclass");
-// 	}
-// }
+function resetGame (){
+	var allCells = document.getElementsByTagName("td");
+	for (var i = 0; i < allCells.length; i++) {
+		allCells[i].setAttribute("class","resetclass");
+		allCells[i].innerHTML = "";
+	};
+
+	
+}
 
 
 
