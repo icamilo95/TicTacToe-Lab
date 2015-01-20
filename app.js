@@ -18,16 +18,14 @@ movement8.addEventListener("click", function(){playTurn(8);});
 var movement9 = document.getElementById("c9");
 movement9.addEventListener("click", function(){playTurn(9);});
 
-
 var Items = ["X","O","X","O","X","O","X","O","X"];
 var Item = " ";
 
-
 function playTurn(cell){
 	if (Items.length === 0){
-		setTimeout(function(){alert("Game Over");},300);
+		setTimeout(function(){alert("Game Over. Click RESET to play again.");},300);
 	} else {
-		turnOfPlayerMessage();		
+				
 		element = "movement" + cell;
 		var movement = window[element];
 		
@@ -35,12 +33,12 @@ function playTurn(cell){
 			Item = Items.shift();	
 			movement.innerHTML = Item;
 			changeColor();
+			turnOfPlayerMessage();
 			// checkWinner();
 			checkWinner2();
 		} 
 	}
 } 
-
 
 var contItem = 0;
 function turnOfPlayerMessage (){
@@ -53,13 +51,11 @@ function turnOfPlayerMessage (){
 		}
 }
 
-
 function winnerMessage(line, number){
 	var message = document.getElementById("winner");
 	alert(message.innerHTML = "The winner is " + "\""+ Item +"\" --> " + line + ": " + number);
 	counterWinner();
 }
-
 
 var xContWins = 0;
 var cContWins = 0;
@@ -83,8 +79,6 @@ function counterWinner (){
 	Items = [];
 }
 
-
-
 function changeColor(){
 	if (Item === "X"){
 		event.target.setAttribute("class","colors1");
@@ -107,6 +101,7 @@ function changeColor(){
 
 
 function checkWinner2 () {
+	var contTieGame = 0;
 	// checks for winner in a column
 	for (var i = 1; i < 4; i++) {
 		
@@ -120,7 +115,7 @@ function checkWinner2 () {
 		if (cPilda1.innerHTML === cPilda4.innerHTML && cPilda1.innerHTML === cPilda7.innerHTML && cPilda1.innerHTML !== "") {
 			// lineWinner(i); 
 			winnerMessage("column",i); 
-
+			contTieGame++;
 			}
 	} 
 	// Checks for winner in a row
@@ -136,10 +131,11 @@ function checkWinner2 () {
 		
 		if (rPilda1.innerHTML === rPilda2.innerHTML && rPilda1.innerHTML === rPilda3.innerHTML && rPilda1.innerHTML !== "") {
 			winnerMessage("row",cont);
-			 
+			 contTieGame++;
 		}else {
 			// It counts winner row: It's neccesary because the loop adds 3 to a, so the next count only adds 1.
 			cont++;
+			contTieGame++;
 		}
 
 	}
@@ -154,6 +150,7 @@ function checkWinner2 () {
 
 		if (dlPilda1.innerHTML === dlPilda9.innerHTML && dlPilda1.innerHTML === dlPilda5.innerHTML && dlPilda1.innerHTML !== "") {
 			winnerMessage("diagonal Left to Right",""); 
+			contTieGame++;
 		}
 	}	
 
@@ -168,20 +165,21 @@ function checkWinner2 () {
 
 		if (drPilda3.innerHTML === drPilda5.innerHTML && drPilda3.innerHTML === drPilda7.innerHTML && drPilda3.innerHTML !== "") {
 			winnerMessage("diagonal Right to Left",""); 
+			contTieGame++;
 		}
 	}
+
+	if (Items.length === 0 && contTieGame === 0) {
+		alert("Tie Game");
+
+	}
+
 
 
 }
 
-
-
-
 function resetGame (){
-	 // Delete line on top of winner game
-	 // document.getElementById("lineColOne").setAttribute("id","line");
-	 // document.getElementById("lineColTwo").setAttribute("id","line");
-
+	 
 	var allCells = document.getElementsByTagName("td");
 	for (var i = 0; i < allCells.length; i++) {
 		allCells[i].setAttribute("class","resetclass");
@@ -216,8 +214,3 @@ function resetGame (){
 // 	} 
 // }
 
-
-
-// Create the variable movement# by putting together the string and the parametter -->
-// Convert the string into a variable -->
-// apply the innerHTML to the variable created previously
