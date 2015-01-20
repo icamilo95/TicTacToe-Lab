@@ -93,7 +93,17 @@ function changeColor(){
 	}
 }
 
-
+// Draws a line on winner board
+// function lineWinner(i){
+// 	var lineWin = document.getElementById("line");
+	
+// 	if (i === 1) {
+// 		lineWin.setAttribute("id","lineColOne");		 		
+// 	} else if (i === 2) {
+// 		lineWin.setAttribute("id","lineColTwo");	
+				
+// 	}
+// }
 
 
 function checkWinner2 () {
@@ -108,7 +118,9 @@ function checkWinner2 () {
 		var cPilda7 = window[col7];	
 		
 		if (cPilda1.innerHTML === cPilda4.innerHTML && cPilda1.innerHTML === cPilda7.innerHTML && cPilda1.innerHTML !== "") {
+			// lineWinner(i); 
 			winnerMessage("column",i); 
+
 			}
 	} 
 	// Checks for winner in a row
@@ -146,7 +158,7 @@ function checkWinner2 () {
 	}	
 
 	// Checks for winner in a diagonal rigth to left
-	for (var c = 3; c < 5; c++) {
+	for (var c = 3; c < 4; c++) {
 		diagr3 = "movement" + c;
 		diagr5 = "movement" + (c + 2);
 		diagr7 = "movement" + (c + 4);
@@ -166,6 +178,10 @@ function checkWinner2 () {
 
 
 function resetGame (){
+	 // Delete line on top of winner game
+	 // document.getElementById("lineColOne").setAttribute("id","line");
+	 // document.getElementById("lineColTwo").setAttribute("id","line");
+
 	var allCells = document.getElementsByTagName("td");
 	for (var i = 0; i < allCells.length; i++) {
 		allCells[i].setAttribute("class","resetclass");

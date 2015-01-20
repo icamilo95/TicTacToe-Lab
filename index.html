@@ -19,43 +19,69 @@
 	<!-- NAV BAR -->
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
-			<h3>Tic Tac Toe - Camilo</h3>
+			<ul class="nav nav-pills">
+			  <li role="presentation"><a href="#">Home</a></li>
+			  <li role="presentation"><a href="#">Games</a></li>
+			  <li role="presentation" class="active"><a href="#">Tic Tac Toe</a></li>
+			  <li role="presentation"><a href="#">About</a></li>
+			  <li role="presentation"><a href="#">Carrers</a></li>
+			  <li role="presentation"><a href="#">Contact</a></li>
+				
+
+			</ul>
+
+			
 		</div>
 	</nav>
 	<!-- END NAV BAR -->
-	<!-- TABLE -->
-	<table>
-		<tr>
-			<td class="cells" id="c1"></td>
-			<td class="cells" id="c2"></td>
-			<td class="cells" id="c3"></td>
-		</tr>
-
-		<tr>
-			<td class="cells" id="c4"></td>
-			<td class="cells" id="c5"></td>
-			<td class="cells" id="c6"></td>
-		</tr>
-		<tr>
-			<td class="cells" id="c7"></td>
-			<td class="cells" id="c8"></td>
-			<td class="cells" id="c9"></td>
-		</tr>
-	</table>
-
+	
+	
 	
 
-	<!-- END TABLE -->
-	<!-- WHITE FRAME && BUTTON-->
 
-	<div id="frame"></div>
-	<h3 id="messageText">Turn of player "X"</h3>
-	<h3 id="winner">The winner is</h3>
-	<h3 id="counter">Counter: 0</h3>
-	<!-- <button onclick="startGame()">Start</button> -->
-	<button onclick="resetGame()">Reset</button>
-	<!-- <button type="button" class="btn btn-primary">Reset</button> -->
+	<!-- TABLE -->
+	<div  class="jumbotron">
+		<h1 class="bg-primary">Tic Tac Toe!</h1>
+		<table class="modal-content">
+			<tr>
+				<td class="cells" id="c1"></td>
+				<td class="cells" id="c2"></td>
+				<td class="cells" id="c3"></td>
+			</tr>
 
+			<tr>
+				<td class="cells" id="c4"></td>
+				<td class="cells" id="c5"></td>
+				<td class="cells" id="c6"></td>
+			</tr>
+			<tr>
+				<td class="cells" id="c7"></td>
+				<td class="cells" id="c8"></td>
+				<td class="cells" id="c9"></td>
+			</tr>
+		</table>
+
+		<!-- END TABLE -->
+		<div class="text">
+			
+		<h3 id="messageText">Turn of player "X"</h3>
+		<h3 id="winner">The winner is</h3>
+		<h3 id="counter">Counter: 0</h3>
+
+
+		</div>
+
+		<!-- MESSAGES && BUTTON-->
+		
+		<!-- <div class="lines" id="line"></div> LINE FOR WINNER BOARD-->
+		<div id="frame"></div>
+		<!-- <h3 id="messageText">Turn of player "X"</h3>
+		<h3 id="winner">The winner is</h3>
+		<h3 id="counter">Counter: 0</h3> -->
+		
+		<button onclick="resetGame()" class="btn btn-primary">Reset</button>
+		
+	</div>
 	<!-- END WHITE FRAME && BUTTON-->	
 
 
