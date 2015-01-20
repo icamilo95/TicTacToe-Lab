@@ -87,19 +87,6 @@ function changeColor(){
 	}
 }
 
-// Draws a line on winner board
-// function lineWinner(i){
-// 	var lineWin = document.getElementById("line");
-	
-// 	if (i === 1) {
-// 		lineWin.setAttribute("id","lineColOne");		 		
-// 	} else if (i === 2) {
-// 		lineWin.setAttribute("id","lineColTwo");	
-				
-// 	}
-// }
-
-
 function checkWinner2 () {
 	var contTieGame = 0;
 	// checks for winner in a column
@@ -114,8 +101,9 @@ function checkWinner2 () {
 		
 		if (cPilda1.innerHTML === cPilda4.innerHTML && cPilda1.innerHTML === cPilda7.innerHTML && cPilda1.innerHTML !== "") {
 			// lineWinner(i); 
-			winnerMessage("column",i); 
 			contTieGame++;
+			winnerMessage("column",i); 
+			
 			}
 	} 
 	// Checks for winner in a row
@@ -130,8 +118,9 @@ function checkWinner2 () {
 	
 		
 		if (rPilda1.innerHTML === rPilda2.innerHTML && rPilda1.innerHTML === rPilda3.innerHTML && rPilda1.innerHTML !== "") {
+			contTieGame++;
 			winnerMessage("row",cont);
-			 contTieGame++;
+			 
 		}else {
 			// It counts winner row: It's neccesary because the loop adds 3 to a, so the next count only adds 1.
 			cont++;
@@ -149,8 +138,9 @@ function checkWinner2 () {
 		var dlPilda9 = window[diagl9];
 
 		if (dlPilda1.innerHTML === dlPilda9.innerHTML && dlPilda1.innerHTML === dlPilda5.innerHTML && dlPilda1.innerHTML !== "") {
-			winnerMessage("diagonal Left to Right",""); 
 			contTieGame++;
+			winnerMessage("diagonal Left to Right",""); 
+			
 		}
 	}	
 
@@ -164,18 +154,15 @@ function checkWinner2 () {
 		var drPilda7 = window[diagr7];
 
 		if (drPilda3.innerHTML === drPilda5.innerHTML && drPilda3.innerHTML === drPilda7.innerHTML && drPilda3.innerHTML !== "") {
-			winnerMessage("diagonal Right to Left",""); 
 			contTieGame++;
+			winnerMessage("diagonal Right to Left",""); 
+			
 		}
 	}
 
 	if (Items.length === 0 && contTieGame === 0) {
-		alert("Tie Game");
-
+		alert("Tie Game, Click RESET to play again. ");
 	}
-
-
-
 }
 
 function resetGame (){
@@ -190,8 +177,20 @@ function resetGame (){
 		messageReset.innerHTML = "Turn of player \"X\"";
 	}
 	Items = ["X","O","X","O","X","O","X","O","X"];
-	
 }
+
+
+// Draws a line on winner board
+// function lineWinner(i){
+// 	var lineWin = document.getElementById("line");
+	
+// 	if (i === 1) {
+// 		lineWin.setAttribute("id","lineColOne");		 		
+// 	} else if (i === 2) {
+// 		lineWin.setAttribute("id","lineColTwo");	
+				
+// 	}
+// }
 
 
 // function checkWinner (){
