@@ -190,8 +190,6 @@ function resetGame (){
 		contItem = 0;
 		var messageReset = document.getElementById("messageText");
 		messageReset.innerHTML = "Turn of player \"X\"";
-		
-		
 	}
 	Items = ["X","O","X","O","X","O","X","O","X"];
 	

@@ -7,8 +7,6 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
-
-
 <head>
 	<meta charset="UTF-8">
 	<title>	Tic Tac Toe - Camilo</title>
@@ -26,29 +24,21 @@
 			  <li role="presentation"><a href="#">About</a></li>
 			  <li role="presentation"><a href="#">Carrers</a></li>
 			  <li role="presentation"><a href="#">Contact</a></li>
-				
-
 			</ul>
-
-			
 		</div>
 	</nav>
-	<!-- END NAV BAR -->
 	
-	
-	
-
-
-	<!-- TABLE -->
-	<div  class="jumbotron">
-		<h1 class="bg-primary">Tic Tac Toe!</h1>
-		<table class="modal-content">
+	<!-- BACKGROUND -->	
+<div id="Background" class="jumbotron">
+	<h1 class="bg-primary">Tic Tac Toe!</h1>
+	<!-- GAME -->
+	<div id="Game" style="float: right; width: 62%;" >
+		<table  class="modal-content">
 			<tr>
 				<td class="cells" id="c1"></td>
 				<td class="cells" id="c2"></td>
 				<td class="cells" id="c3"></td>
 			</tr>
-
 			<tr>
 				<td class="cells" id="c4"></td>
 				<td class="cells" id="c5"></td>
@@ -60,31 +50,23 @@
 				<td class="cells" id="c9"></td>
 			</tr>
 		</table>
-
-		<!-- END TABLE -->
+	</div>
+	
+	<!-- TEXT INFO -->
+	
+	<div id="text" style="float: left; width: 35%;">
 		<div class="text">
 			
-		<h3 id="messageText">Turn of player "X"</h3>
-		<h3 id="winner">The winner is</h3>
-		<h3 id="counter">Counter: 0</h3>
-
-
+			<h3 id="messageText" class="well">Turn of player "X"</h3>
+			<h3 id="winner" class="well">The winner is</h3>
+			<h3 id="counter" class="well">Counter: 0</h3>
+			<br>
+			<button onclick="resetGame()" class="btn btn-danger">Reset</button>
 		</div>
-
-		<!-- MESSAGES && BUTTON-->
-		
-		<!-- <div class="lines" id="line"></div> LINE FOR WINNER BOARD-->
-		<div id="frame"></div>
-		<!-- <h3 id="messageText">Turn of player "X"</h3>
-		<h3 id="winner">The winner is</h3>
-		<h3 id="counter">Counter: 0</h3> -->
-		
-		<button onclick="resetGame()" class="btn btn-primary">Reset</button>
-		
 	</div>
-	<!-- END WHITE FRAME && BUTTON-->	
+</div>
 
-
+<footer>Copyright 2015 Camilo Ordonez. All rights reserved.</footer>
 
 <script type="text/javascript" src="app.js"></script>
 
